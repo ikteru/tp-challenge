@@ -24,6 +24,34 @@ class WordsTrie {
         }
         current.isWord = true;
     }
+
+    generateAnagrams(hintPhrase: string, numberOfWords: number) {
+        var anagrams: string[] = [];
+        this.getAllAnagramsRecursively(hintPhrase, numberOfWords - 1, "", anagrams);
+        return anagrams;
+    }
+
+    getAllAnagramsRecursively(hintPhrase: string, spaces: number, candidate: string, anagrams: string[], node: any = null) {
+        if (node == null) node = this.root;
+
+        if (hintPhrase.length == 0) {
+            if (node.isWord && spaces == 0)
+                anagrams.push(candidate);
+            return;
+        }
+        for (let key in node.children) {
+            // Remove the letter from the hintPhrase.
+            const result = hintPhrase.replace(key, "");
+
+            // If the letter is in the hintPhrase, the hintPhrase won't be equal to the result. 
+            if (hintPhrase != result) {
+                this.getAllAnagramsRecursively(result, spaces, candidate + key, anagrams, node.children[key]);
+            }
+        }
+        if (node.isWord && spaces > 0) {
+            this.getAllAnagramsRecursively(hintPhrase, spaces - 1, candidate + " ", anagrams);
+        }
+    }
 }
 
 

@@ -1,6 +1,10 @@
 import { config } from "./config";
-import { filterWords, readFile, replaceAll } from "./lib";
+import { filterWords, readFile, replaceAll, getSeconds } from "./lib";
+
 import { WordsTrie } from "./trie";
+import { performance } from "perf_hooks";
+
+
 const tmp : string = config.hintPhrase;
 const hintPhrase : string = replaceAll( tmp, " ", "");
 
@@ -25,3 +29,13 @@ const wordsTrie = new WordsTrie();
 for (let i = 0; i < words.length; i++) {
     wordsTrie.insert(words[i]);
 }
+
+console.log("");
+console.log("Now let's find those anagrams ...");
+var startTime = performance.now()
+const anagrams = wordsTrie.generateAnagrams( hintPhrase, numberOfWords);
+var endTime = performance.now()
+
+console.log("");
+console.log(`Wow, found ${anagrams.length} anagrams!`);
+console.log(`And the whole thing took ${getSeconds(endTime - startTime)} seconds.`);

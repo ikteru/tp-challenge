@@ -55,3 +55,8 @@ export function compareOccurances(word: string, hintPhrase: string) {
 export function replaceAll(str: string, oldChar: string, newChar: string){
     return str.split(oldChar).join(newChar);
 }
+
+// Get minutes from milliseconds
+export function getSeconds(ms: number) {
+    return Math.round(ms / 1000 );
+}
