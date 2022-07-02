@@ -60,3 +60,19 @@ export function replaceAll(str: string, oldChar: string, newChar: string){
 export function getSeconds(ms: number) {
     return Math.round(ms / 1000 );
 }
+
+// Given a list of strings and a list of hashes, return a list of strings whose hashes match the hashes in the list of hashes.
+// The function returns an array of strings.
+export function findMatchingHashes(anagrams: string[], hashes: string[]) {
+    const crypto = require('crypto')
+
+    const results = [];
+    for (const anagram of anagrams) {
+        const hash = crypto.createHash('md5').update(anagram).digest("hex");
+        if (hashes.includes(hash)) {
+            results.push(anagram);
+        }
+    }
+    return results;
+}
+

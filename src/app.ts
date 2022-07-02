@@ -1,5 +1,5 @@
 import { config } from "./config";
-import { filterWords, readFile, replaceAll, getSeconds } from "./lib";
+import { filterWords, readFile, replaceAll, getSeconds, findMatchingHashes } from "./lib";
 
 import { WordsTrie } from "./trie";
 import { performance } from "perf_hooks";
@@ -39,3 +39,17 @@ var endTime = performance.now()
 console.log("");
 console.log(`Wow, found ${anagrams.length} anagrams!`);
 console.log(`And the whole thing took ${getSeconds(endTime - startTime)} seconds.`);
+
+console.log("");
+console.log("Finally, which anagrams solve our puzzle ? ...");
+const results = findMatchingHashes(anagrams, hashes);
+
+console.log("");
+console.log("Done ... These are the ones : ");
+console.log("");
+
+console.log(results);
+
+console.log("");
+console.log("... and that's all folks !");
+
