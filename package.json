@@ -2,14 +2,21 @@
   "name": "ts-challenge",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run ts-node",
+    "start:dev": "nodemon --exec npm run ts-node",
+    "start:dev:test": "nodemon --exec npm run ts-node:test",
+    "ts-node": "ts-node ./src/app.ts",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "pretest": "npm run lint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^18.0.0"
+    "@types/node": "^18.0.0",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
   }
 }
