@@ -1,5 +1,5 @@
 import { config } from "./config";
-import { filterWords, readFile, replaceAll, getSeconds, findMatchingHashes } from "./lib";
+import { filterWords, readWordsFile, replaceAll, getSeconds, findMatchingHashes } from "./lib";
 
 import { WordsTrie } from "./trie";
 import { performance } from "perf_hooks";
@@ -15,7 +15,7 @@ const hashes : string[] = config.hashes;
 
 console.log("");
 console.log("Importing list of words...");
-let words : string[] = readFile("WordList");
+let words : string[] = readWordsFile("WordList");
 
 console.log("");
 console.log("Filtering out the small words, the words that contain letters outside the hint phrase, and duplicates too ...");

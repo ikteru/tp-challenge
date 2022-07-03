@@ -1,10 +1,10 @@
 // Read a file in the filesystem.
 // The file contains a list of words. Each word is on a separate line.
 // The function returns an array of words.
-export function readFile(filePath: string) {
+export function readWordsFile(filePath: string) : string[] {
     const fs = require('fs');
     const data = fs.readFileSync(filePath, 'utf8');
-    return data.split('\r\n');
+    return data.split(/\r?\n/);
 }
 
 // Given a list of words, remove all words that don't satisfy the following conditions:
