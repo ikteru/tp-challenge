@@ -12,7 +12,7 @@ export function readWordsFile(filePath: string) : string[] {
 // - The word is not a duplicate of a word that is already in the list.
 // - The characters of the word are all included in a given set of characters hintPhrase.
 // The function returns an array of words.
-export function filterWords(words: string[], minWordLength: number, hintPhrase: string) {
+export function filterWords(words: string[], minWordLength: number, hintPhrase: string) : string[] {
     const result: string[] = [];
     hintPhrase = hintPhrase.replace(" ", "");
     for (const word of words) {
