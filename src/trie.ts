@@ -13,7 +13,7 @@ class WordsTrie {
         this.root = new TrieNode();
     }
 
-    insert(word: string) {
+    insert(word: string) : void {
         let current: TrieNode = this.root;
         for (let i = 0; i < word.length; i++) {
             const char = word[i];
@@ -25,13 +25,13 @@ class WordsTrie {
         current.isWord = true;
     }
 
-    generateAnagrams(hintPhrase: string, numberOfWords: number) {
+    generateAnagrams(hintPhrase: string, numberOfWords: number) : string[] {
         var anagrams: string[] = [];
         this.getAllAnagramsRecursively(hintPhrase, numberOfWords - 1, "", anagrams);
         return anagrams;
     }
 
-    getAllAnagramsRecursively(hintPhrase: string, spaces: number, candidate: string, anagrams: string[], node: any = null) {
+    getAllAnagramsRecursively(hintPhrase: string, spaces: number, candidate: string, anagrams: string[], node: any = null) : void {
         if (node == null) node = this.root;
 
         if (hintPhrase.length == 0) {

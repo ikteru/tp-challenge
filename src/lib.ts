@@ -3,7 +3,7 @@
 // The function returns an array of words.
 export function readWordsFile(filePath: string) : string[] {
     const fs = require('fs');
-    const data = fs.readFileSync(filePath, 'utf8');
+    const data = fs.readFileSync(filePath, 'utf8'); 
     return data.split(/\r?\n/);
 }
 
@@ -26,7 +26,7 @@ export function filterWords(words: string[], minWordLength: number, hintPhrase: 
 // Given two words A and B, compare the number of occurrences of each character in A and B.
 // If the number of occurrences of a character in A is greater than the number of occurrences of the same character in B, return false.
 // If the number of occurrences of a character in A is less than or equal to the number of occurrences of the same character in B, return true.
-export function compareOccurances(word: string, hintPhrase: string) {
+export function compareOccurances(word: string, hintPhrase: string) : boolean {
     const wordOccurances: any = {};
     const hintPhraseOccurances: any = {};
     for (const character of word) {
@@ -52,18 +52,18 @@ export function compareOccurances(word: string, hintPhrase: string) {
 }
 
 // Replace all occurances of a character with another.
-export function replaceAll(str: string, oldChar: string, newChar: string){
+export function replaceAll(str: string, oldChar: string, newChar: string) : string {
     return str.split(oldChar).join(newChar);
 }
 
 // Get minutes from milliseconds
-export function getSeconds(ms: number) {
+export function getSeconds(ms: number) : number{
     return Math.round(ms / 1000 );
 }
 
 // Given a list of strings and a list of hashes, return a list of strings whose hashes match the hashes in the list of hashes.
 // The function returns an array of strings.
-export function findMatchingHashes(anagrams: string[], hashes: string[]) {
+export function findMatchingHashes(anagrams: string[], hashes: string[]) : string[] {
     const crypto = require('crypto')
 
     const results = [];
