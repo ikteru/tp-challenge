@@ -44,7 +44,7 @@ export function compareOccurances(word: string, hintPhrase: string) : boolean {
         }
     }
     for (const character in wordOccurances) {
-        if (wordOccurances[character] > wordOccurances[character]) {
+        if (wordOccurances[character] > hintPhraseOccurances[character]) {
             return false;
         }
     }
